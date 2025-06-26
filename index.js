@@ -1,11 +1,17 @@
 import { Server } from "socket.io"
+import { configDotenv } from 'dotenv';
+
+configDotenv();
 
 // change required for production
-const io = new Server(9000, {
-    cors: {
-        origin: "http://localhost:5173"
-    }
-})
+
+const url = process.env.FRONTEND_URL;
+const PORT = process.env.PORT || 9000;
+const io = new Server(PORT, {
+  cors: {
+    origin: url || "http://localhost:5173"
+  }
+});
 
 // Array of Objects
 let users = [];

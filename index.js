@@ -5,11 +5,11 @@ configDotenv();
 
 // change required for production
 
-const url = process.env.FRONTEND_URL;
+const url = process.env.FRONTEND_URL || "http://localhost:5173";
 const PORT = process.env.PORT || 9000;
 const io = new Server(PORT, {
   cors: {
-    origin: url || "http://localhost:5173"
+    origin: url
   }
 });
 
